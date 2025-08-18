@@ -11,7 +11,7 @@ services:
       -t log
       -w
       -s 0.1s
-      -d 25
+      -d 100
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped
@@ -25,7 +25,7 @@ services:
       -t log
       -w
       -s 0.1s
-      -d 25
+      -d 100
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped
@@ -39,7 +39,7 @@ services:
       -t log
       -w
       -s 0.1s
-      -d 25
+      -d 100
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
       -t log
       -w
       -s 0.1s
-      -d 25
+      -d 100
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped

@@ -1,0 +1,24 @@
+# Only process if this is an Apache combined log
+if .log_file_name == "apache_combined.log" {
+    
+    # Parse the combined log format
+    parsed = parse_regex!(.body, r'^(?P<remote_addr>\S+) (?P<remote_logname>\S+) (?P<remote_user>\S+) \[(?P<timestamp>[^\]]+)\] "(?P<method>\S+) (?P<url>\S+) (?P<protocol>[^"]+)" (?P<status>\d+) (?P<bytes_sent>\S+) "(?P<referer>[^"]*)" "(?P<user_agent>[^"]*)"$')
+    
+    # Set the parsed fields
+    .remote_addr = parsed.remote_addr
+    .remote_logname = if parsed.remote_logname == "-" { null } else { parsed.remote_logname }
+    .remote_user = if parsed.remote_user == "-" { null } else { parsed.remote_user }
+    .log_timestamp = parsed.timestamp
+    .method = parsed.method
+    .url = parsed.url
+    .protocol = parsed.protocol
+    .status = to_int!(parsed.status)
+    .bytes_sent = if parsed.bytes_sent == "-" { null } else { to_int!(parsed.bytes_sent) }
+    .referer = if parsed.referer == "-" { null } else { parsed.referer }
+    .user_agent = parsed.user_agent
+    .log_type = "access"
+    
+    # Clean up
+    del(.body)
+} 
+ .

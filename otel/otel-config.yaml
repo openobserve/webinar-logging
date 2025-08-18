@@ -1,0 +1,31 @@
+receivers:
+  filelog/apache_common:
+    include: [/tmp/logs/apache_common.log]
+    start_at: beginning
+
+  filelog/apache_c/tmpombined:
+    include: [/tmp/logs/apache_combined.log]
+    start_at: beginning
+
+  filelog/apache_error:
+    include: [/tmp/logs/apache_error.log]
+    start_at: beginning
+
+processors:
+  batch:
+    timeout: 1s
+    send_batch_size: 100
+
+exporters:
+  otlphttp/openobserve:
+    endpoint: https://api.openobserve.ai/api/prabhat_organization_2512_r6EinDy3fpExW1M/
+    headers:
+      Authorization: "Basic BLABLA="
+      stream-name: apache_logs
+
+service:
+  pipelines:
+    logs:
+      receivers: [filelog/apache_common, filelog/apache_combined, filelog/apache_error]
+      processors: [batch]
+      exporters: [otlphttp/openobserve]

@@ -1,0 +1,21 @@
+# Only process if this is an Apache error log
+if .log_file_name == "apache_error.log" {
+    
+    # Parse the error log format
+    parsed = parse_regex!(.body, r'^\[(?P<timestamp>[^\]]+)\] \[(?P<module>[^:]*):(?P<level>[^\]]*)\] \[pid (?P<pid>\d+):tid (?P<tid>\d+)\] \[client (?P<client_ip>[^:]+):(?P<client_port>\d+)\] (?P<message>.*)$')
+    
+    # Set the parsed fields
+    .log_timestamp = parsed.timestamp
+    .log_level = parsed.level
+    .module = parsed.module
+    .pid = to_int!(parsed.pid)
+    .tid = to_int!(parsed.tid)
+    .client_ip = parsed.client_ip
+    .client_port = to_int!(parsed.client_port)
+    .message = parsed.message
+    .log_type = "error"
+    
+    # Clean up
+    del(.body)
+} 
+ .

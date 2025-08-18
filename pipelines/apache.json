@@ -1,0 +1,191 @@
+{
+  "pipeline_id": "7363075704327548928",
+  "version": 1,
+  "enabled": true,
+  "org": "prabhat_organization_2512_r6EinDy3fpExW1M",
+  "name": "apache",
+  "description": "",
+  "source": {
+    "source_type": "realtime",
+    "org_id": "prabhat_organization_2512_r6EinDy3fpExW1M",
+    "stream_name": "apache_logs",
+    "stream_type": "logs"
+  },
+  "nodes": [
+    {
+      "id": "0514142c-a96e-4304-88f7-5816fab86e0a",
+      "data": {
+        "node_type": "stream",
+        "org_id": "prabhat_organization_2512_r6EinDy3fpExW1M",
+        "stream_name": "apache_logs",
+        "stream_type": "logs"
+      },
+      "position": {
+        "x": 193.61397,
+        "y": -144.51172
+      },
+      "io_type": "input"
+    },
+    {
+      "id": "9826adda-1831-469f-8242-3415262a4b31",
+      "data": {
+        "node_type": "stream",
+        "org_id": "prabhat_organization_2512_r6EinDy3fpExW1M",
+        "stream_name": "apache_logs",
+        "stream_type": "logs"
+      },
+      "position": {
+        "x": 212.43393,
+        "y": 666.8295
+      },
+      "io_type": "output"
+    },
+    {
+      "id": "00487daa-1578-496c-8b86-f58fe0a5e0af",
+      "data": {
+        "node_type": "function",
+        "name": "apache_error",
+        "after_flatten": true,
+        "num_args": 0
+      },
+      "position": {
+        "x": 151.10934,
+        "y": 75.79684
+      },
+      "io_type": "default"
+    },
+    {
+      "id": "d95f974f-52c1-4b32-b568-956186851121",
+      "data": {
+        "node_type": "function",
+        "name": "apache_common",
+        "after_flatten": true,
+        "num_args": 0
+      },
+      "position": {
+        "x": 198.5015,
+        "y": 207.0783
+      },
+      "io_type": "default"
+    },
+    {
+      "id": "31330ffa-d514-458d-a498-3f6ebf32e4e0",
+      "data": {
+        "node_type": "function",
+        "name": "apache_combined",
+        "after_flatten": true,
+        "num_args": 0
+      },
+      "position": {
+        "x": 202.04509,
+        "y": 348.6924
+      },
+      "io_type": "default"
+    },
+    {
+      "id": "4b7d64b5-a6a3-4f6c-9563-f45f4c7a799d",
+      "data": {
+        "node_type": "function",
+        "name": "apache_geo",
+        "after_flatten": true,
+        "num_args": 0
+      },
+      "position": {
+        "x": 201.03427,
+        "y": 461.1803
+      },
+      "io_type": "default"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e0514142c-a96e-4304-88f7-5816fab86e0a-00487daa-1578-496c-8b86-f58fe0a5e0af",
+      "source": "0514142c-a96e-4304-88f7-5816fab86e0a",
+      "target": "00487daa-1578-496c-8b86-f58fe0a5e0af",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "type": "custom",
+      "style": {
+        "strokeWidth": 2
+      },
+      "animated": true,
+      "updatable": true
+    },
+    {
+      "id": "e00487daa-1578-496c-8b86-f58fe0a5e0af-d95f974f-52c1-4b32-b568-956186851121",
+      "source": "00487daa-1578-496c-8b86-f58fe0a5e0af",
+      "target": "d95f974f-52c1-4b32-b568-956186851121",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "type": "custom",
+      "style": {
+        "strokeWidth": 2
+      },
+      "animated": true,
+      "updatable": true
+    },
+    {
+      "id": "ed95f974f-52c1-4b32-b568-956186851121-31330ffa-d514-458d-a498-3f6ebf32e4e0",
+      "source": "d95f974f-52c1-4b32-b568-956186851121",
+      "target": "31330ffa-d514-458d-a498-3f6ebf32e4e0",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "type": "custom",
+      "style": {
+        "strokeWidth": 2
+      },
+      "animated": true,
+      "updatable": true
+    },
+    {
+      "id": "e31330ffa-d514-458d-a498-3f6ebf32e4e0-4b7d64b5-a6a3-4f6c-9563-f45f4c7a799d",
+      "source": "31330ffa-d514-458d-a498-3f6ebf32e4e0",
+      "target": "4b7d64b5-a6a3-4f6c-9563-f45f4c7a799d",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "type": "custom",
+      "style": {
+        "strokeWidth": 2
+      },
+      "animated": true,
+      "updatable": true
+    },
+    {
+      "id": "e4b7d64b5-a6a3-4f6c-9563-f45f4c7a799d-9826adda-1831-469f-8242-3415262a4b31",
+      "source": "4b7d64b5-a6a3-4f6c-9563-f45f4c7a799d",
+      "target": "9826adda-1831-469f-8242-3415262a4b31",
+      "markerEnd": {
+        "type": "arrowclosed",
+        "width": 20,
+        "height": 20
+      },
+      "type": "custom",
+      "style": {
+        "strokeWidth": 2
+      },
+      "animated": true,
+      "updatable": true
+    }
+  ],
+  "paused_at": null,
+  "type": "realtime",
+  "stream_name": "apache_logs",
+  "stream_type": "logs",
+  "frequency": "--",
+  "period": "--",
+  "cron": "--",
+  "sql_query": "--",
+  "#": 1
+}

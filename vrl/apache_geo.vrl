@@ -1,0 +1,27 @@
+# GeoIP enrichment for IP addresses
+# Works for both client_ip (from error logs) and remote_addr (from access logs)
+
+ip_to_enrich = null
+
+# Determine which IP field to use for enrichment
+if exists(.client_ip) && .client_ip != null {
+    ip_to_enrich = .client_ip
+} else if exists(.remote_addr) && .remote_addr != null {
+    ip_to_enrich = .remote_addr
+}
+
+# Only proceed if we have an IP to enrich
+if ip_to_enrich != null {
+    # Get city/location data
+    geo_city, err = get_enrichment_table_record("maxmind_city", {"ip": ip_to_enrich })
+    if err == null {
+        .geo_city = geo_city
+    }
+    
+    # Get ASN/ISP data
+    geo_asn, err = get_enrichment_table_record("maxmind_asn", {"ip": ip_to_enrich })
+    if err == null {
+        .geo_asn = geo_asn
+    }
+} 
+ .

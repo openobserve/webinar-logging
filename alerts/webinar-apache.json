@@ -1,0 +1,51 @@
+{
+  "name": "webinar-apache",
+  "org_id": "prabhat_organization_2512_r6EinDy3fpExW1M",
+  "stream_type": "logs",
+  "stream_name": "apache2_logs",
+  "is_real_time": true,
+  "query_condition": {
+    "type": "custom",
+    "conditions": {
+      "or": [
+        {
+          "column": "log_level",
+          "operator": "contains",
+          "value": "error",
+          "ignore_case": false
+        }
+      ]
+    },
+    "sql": null,
+    "promql": null,
+    "promql_condition": null,
+    "aggregation": null,
+    "vrl_function": null,
+    "search_event_type": null,
+    "multi_time_range": []
+  },
+  "trigger_condition": {
+    "period": 10,
+    "operator": ">=",
+    "threshold": 3,
+    "frequency": 1,
+    "cron": "",
+    "frequency_type": "minutes",
+    "silence": 5,
+    "timezone": "UTC",
+    "tolerance_in_secs": null,
+    "align_time": true
+  },
+  "destinations": [
+    "webinar-apache"
+  ],
+  "context_attributes": {},
+  "row_template": "",
+  "description": "",
+  "enabled": true,
+  "tz_offset": 0,
+  "last_triggered_at": 1755612116937944,
+  "last_satisfied_at": null,
+  "owner": "o2@example.com",
+  "last_edited_by": "o2@example.com"
+}

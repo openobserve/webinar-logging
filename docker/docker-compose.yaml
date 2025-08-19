@@ -10,8 +10,8 @@ services:
       -o /logs/apache_common.log
       -t log
       -w
-      -s 0.1s
-      -d 100
+      -s 0.5
+      -d 10000
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped
@@ -24,8 +24,8 @@ services:
       -o /logs/apache_common.log
       -t log
       -w
-      -s 0.1s
-      -d 100
+      -s 1s
+      -d 1000
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped
@@ -138,8 +138,8 @@ services:
       -o /logs/apache_error.log
       -t log
       -w
-      -s 0.25s
-      -d 10
+      -s 0.75s
+      -d 10000
     volumes:
       - /tmp/logs:/logs
     restart: unless-stopped

@@ -13,14 +13,14 @@ receivers:
 
 processors:
   batch:
-    timeout: 1s
-    send_batch_size: 100
+    timeout: 2s
+    send_batch_size: 1000
 
 exporters:
   otlphttp/openobserve:
     endpoint: https://api.openobserve.ai/api/prabhat_organization_2512_r6EinDy3fpExW1M/
     headers:
-      Authorization: "Basic BLABLA="
+      Authorization: "Basic Y2hhaXRhbnlhQG9wZW5vYnNlcnZlLmFpOm5nY0oxdmNVSnBXTEFyY0s="
       stream-name: apache_logs
 
 service:

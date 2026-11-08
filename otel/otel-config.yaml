@@ -18,9 +18,9 @@ processors:
 
 exporters:
   otlphttp/openobserve:
-    endpoint: https://api.openobserve.ai/api/prabhat_organization_2512_r6EinDy3fpExW1M/
+    endpoint: YOUR_OPENOBSERVE_ENDPOINT
     headers:
-      Authorization: "Basic Y2hhaXRhbnlhQG9wZW5vYnNlcnZlLmFpOm5nY0oxdmNVSnBXTEFyY0s="
+      Authorization: "Basic YOUR_BASE64_CREDENTIALS"
       stream-name: apache_logs
 
 service:
